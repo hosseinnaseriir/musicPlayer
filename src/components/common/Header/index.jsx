@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, ButtonBase, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
@@ -8,8 +8,14 @@ import logo from "./../../../assets/images/Logo.png";
 import MusicDetails from "./MusicDetails";
 import { useStyles } from "./header.styles";
 
-function Header({ audio }) {
-  const [isPlaying, setIsPlaying] = useState(false);
+function Header({
+  audio,
+  currentSong,
+  isPlaying,
+  setIsPlaying,
+  setCurrentSong,
+  musicsList,
+}) {
   const classes = useStyles();
 
   const handlePlayMusic = () => {
@@ -22,13 +28,17 @@ function Header({ audio }) {
     setIsPlaying(false);
   };
 
+  useEffect(() => {
+    handlePlayMusic();
+  }, [currentSong]);
+
   return (
     <Box className={classes.root} component="header">
       <Container maxWidth={false} sx={{ padding: "0 24px" }}>
         <Box py="50px" display="flex" className={classes.headerItems}>
           <Box
             sx={{
-              backgroundImage: `url(${mohsen}), linear-gradient(100.41deg, rgba(14, 99, 44, 0.15) 8.55%, rgba(32, 32, 32, 0.15) 93.44%)`,
+              backgroundImage: `url(${currentSong.cover}), linear-gradient(100.41deg, rgba(14, 99, 44, 0.15) 8.55%, rgba(32, 32, 32, 0.15) 93.44%)`,
             }}
             className={classes.musicCover}
           >
@@ -42,7 +52,15 @@ function Header({ audio }) {
               </ButtonBase>
             )}
           </Box>
-          <MusicDetails isPlaying={isPlaying} audio={audio} />
+          <MusicDetails
+            handlePauseMusic={handlePauseMusic}
+            currentSong={currentSong}
+            isPlaying={isPlaying}
+            audio={audio}
+            setCurrentSong={setCurrentSong}
+            musicsList={musicsList}
+            handlePlayMusic={handlePlayMusic}
+          />
           <Box
             alignSelf="flex-start"
             width={100}

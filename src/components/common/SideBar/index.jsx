@@ -5,6 +5,7 @@ import logo from "./../../../assets/images/Logo.png";
 import { useStyles } from "./sidebar.style";
 import { svgs } from "./../../../assets/svgs/index";
 import MenuItem from "./MenuItem";
+import { Link } from "react-router-dom";
 
 function SideBar() {
   const classes = useStyles();
@@ -17,11 +18,15 @@ function SideBar() {
         </Typography>
       </Box>
       <Box component="ul">
-        <MenuItem icon={svgs.songs}>all Songs</MenuItem>
+        <MenuItem href="/" icon={svgs.songs}>
+          all Songs
+        </MenuItem>
         <MenuItem icon={svgs.star}>favorite Songs</MenuItem>
         <MenuItem icon={svgs.songs}>all Songs</MenuItem>
         <MenuItem icon={svgs.songs}>all Songs</MenuItem>
-        <MenuItem icon={svgs.songs}>all Songs</MenuItem>
+        <MenuItem href="/about" icon={svgs.songs}>
+          About Us
+        </MenuItem>
       </Box>
 
       <Typography color="white">

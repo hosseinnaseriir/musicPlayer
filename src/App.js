@@ -2,23 +2,49 @@ import React, { useRef, useState } from "react";
 import { Button } from "@mui/material";
 import Layout from "./components/Layout";
 import musics from "./data/util";
+import { Routes, Route } from "react-router-dom";
+import MainScreen from "./screens/MainScreen";
+import AboutScreen from "./screens/AboutUs";
+import { handleNextMusic } from "./utils/handleNextMusic";
 
 function App() {
+  const [isPlaying, setIsPlaying] = useState(false);
   const [musicsList, setMusicsList] = useState(musics);
-
-  console.log(musicsList)
-
+  const [currentSong, setCurrentSong] = useState(musicsList[0]);
   const audioRef = useRef(null);
 
   return (
     <div className="App">
       <audio
+        onEnded={() => handleNextMusic(musicsList, currentSong, setCurrentSong)}
         ref={audioRef}
-        src="https://downloadmusic.gratomic.ir/music/dl/archive/2017/12/12/Mohsen_Yeganeh__-Behet_Ghol_Midam_Gratomic.com.mp3"
+        src={currentSong.audio}
       />
-      <Layout audio={audioRef}>
-        <Button variant="contained">hello </Button>
-      </Layout>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Layout
+              musicsList={musicsList}
+              isPlaying={isPlaying}
+              setIsPlaying={setIsPlaying}
+              currentSong={currentSong}
+              setCurrentSong={setCurrentSong}
+              audio={audioRef}
+            >
+              <MainScreen
+                audioRef={audioRef}
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+                setCurrentSong={setCurrentSong}
+                musicsList={musicsList}
+              />
+            </Layout>
+          }
+        />
+
+        <Route path="/about" element={<AboutScreen />} />
+      </Routes>
     </div>
   );
 }
