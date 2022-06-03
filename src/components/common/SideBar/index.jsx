@@ -23,7 +23,9 @@ function SideBar() {
         </MenuItem>
         <MenuItem icon={svgs.star}>favorite Songs</MenuItem>
         <MenuItem icon={svgs.songs}>all Songs</MenuItem>
-        <MenuItem icon={svgs.songs}>all Songs</MenuItem>
+        <MenuItem href="/login" icon={svgs.songs}>
+          login
+        </MenuItem>
         <MenuItem href="/about" icon={svgs.songs}>
           About Us
         </MenuItem>

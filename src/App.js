@@ -7,10 +7,12 @@ import MainScreen from "./screens/MainScreen";
 import AboutScreen from "./screens/AboutUs";
 import { handleNextMusic } from "./utils/handleNextMusic";
 import { contexts } from "./contexts";
+import LoginScreen from "./screens/Login";
 
 function App() {
   // Consumer
-  const { currentSong, musicsList,audioRef, setCurrentSong } = useContext(contexts);
+  const { currentSong, musicsList, audioRef, setCurrentSong } =
+    useContext(contexts);
 
   return (
     <div className="App">
@@ -23,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainScreen />} />
           <Route path="/about" element={<AboutScreen />} />
+          <Route path="/login" element={<LoginScreen />} />
         </Routes>
       </Layout>
     </div>
