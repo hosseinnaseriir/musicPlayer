@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Box, ButtonBase, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
@@ -7,15 +7,17 @@ import mohsen from "./../../../assets/images/mosen.png";
 import logo from "./../../../assets/images/Logo.png";
 import MusicDetails from "./MusicDetails";
 import { useStyles } from "./header.styles";
+import { contexts } from "./../../../contexts/index";
 
-function Header({
-  audio,
-  currentSong,
-  isPlaying,
-  setIsPlaying,
-  setCurrentSong,
-  musicsList,
-}) {
+function Header() {
+  const {
+    currentSong,
+    audioRef:audio,
+    isPlaying,
+    setIsPlaying,
+    setCurrentSong,
+    musicsList,
+  } = useContext(contexts);
   const classes = useStyles();
 
   const handlePlayMusic = () => {

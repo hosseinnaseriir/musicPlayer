@@ -1,17 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Button } from "@mui/material";
 import Layout from "./components/Layout";
 import musics from "./data/util";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import MainScreen from "./screens/MainScreen";
 import AboutScreen from "./screens/AboutUs";
 import { handleNextMusic } from "./utils/handleNextMusic";
+import { contexts } from "./contexts";
 
 function App() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [musicsList, setMusicsList] = useState(musics);
-  const [currentSong, setCurrentSong] = useState(musicsList[0]);
-  const audioRef = useRef(null);
+  // Consumer
+  const { currentSong, musicsList,audioRef, setCurrentSong } = useContext(contexts);
 
   return (
     <div className="App">
@@ -20,31 +19,12 @@ function App() {
         ref={audioRef}
         src={currentSong.audio}
       />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout
-              musicsList={musicsList}
-              isPlaying={isPlaying}
-              setIsPlaying={setIsPlaying}
-              currentSong={currentSong}
-              setCurrentSong={setCurrentSong}
-              audio={audioRef}
-            >
-              <MainScreen
-                audioRef={audioRef}
-                isPlaying={isPlaying}
-                setIsPlaying={setIsPlaying}
-                setCurrentSong={setCurrentSong}
-                musicsList={musicsList}
-              />
-            </Layout>
-          }
-        />
-
-        <Route path="/about" element={<AboutScreen />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<MainScreen />} />
+          <Route path="/about" element={<AboutScreen />} />
+        </Routes>
+      </Layout>
     </div>
   );
 }

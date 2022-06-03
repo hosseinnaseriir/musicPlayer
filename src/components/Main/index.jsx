@@ -1,13 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Avatar, Box, Grid, Typography } from "@mui/material";
+import { contexts } from "./../../contexts/index";
 
-function Main({
-  musicsList,
-  setIsPlaying,
-  isPlaying,
-  audioRef,
-  setCurrentSong,
-}) {
+function Main() {
+  const { musicsList, setIsPlaying, setCurrentSong } = useContext(contexts);
   const handleChangeCurrentSong = (music) => {
     setCurrentSong(music);
     setIsPlaying(false);
