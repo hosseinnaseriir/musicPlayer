@@ -4,6 +4,7 @@ export default function musics() {
   return [
     {
       id: uuidv4(),
+      details: "detals of musice folan ",
       name: "rahe meyKhane",
       artist: "MohammadReza Shajaryan",
       cover:
@@ -15,6 +16,7 @@ export default function musics() {
     },
     {
       id: uuidv4(),
+      details: "detals of musice folan ",
       name: "gholame chashm",
       artist: "MohammadReza Shajaryan",
       cover: "http://ahangbaz.in/wp-content/uploads/cover/1236866390.jpg",
@@ -25,6 +27,7 @@ export default function musics() {
     },
     {
       id: uuidv4(),
+      details: "detals of musice folan ",
       name: "Saghi bia",
       artist: "MohammadReza Shajaryan",
       cover:
@@ -36,6 +39,7 @@ export default function musics() {
     },
     {
       id: uuidv4(),
+      details: "detals of musice folan ",
       name: "koli",
       artist: "Homayoun Shajarian",
       cover: "http://ahangbaz.in/wp-content/uploads/cover/38357467.jpg",
@@ -46,6 +50,7 @@ export default function musics() {
     },
     {
       id: uuidv4(),
+      details: "detals of musice folan ",
       name: "khod khah",
       artist: "Mohsen Yegane",
       cover:
@@ -57,6 +62,7 @@ export default function musics() {
     },
     {
       id: uuidv4(),
+      details: "detals of musice folan ",
       name: "bist hezar arezo",
       artist: "Mohsen Chavooshi",
       cover:
@@ -68,6 +74,7 @@ export default function musics() {
     },
     {
       id: uuidv4(),
+      details: "detals of musice folan ",
       name: "ahd kardam",
       artist: "Evan Band",
       cover:

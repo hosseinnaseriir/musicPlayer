@@ -7,8 +7,9 @@ import { svgs } from "./../../../assets/svgs/index";
 import MenuItem from "./MenuItem";
 import { Link } from "react-router-dom";
 
-function SideBar() {
+const SideBar = React.memo(() => {
   const classes = useStyles();
+  console.log("SideBar RENDERED!");
   return (
     <Grid item xs={4} md={4} component={"sidebar"} className={classes.root}>
       <Box gap={2} display="flex" alignItems="center">
@@ -36,6 +37,6 @@ function SideBar() {
       </Typography>
     </Grid>
   );
-}
+});
 
 export default SideBar;

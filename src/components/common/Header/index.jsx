@@ -8,11 +8,13 @@ import logo from "./../../../assets/images/Logo.png";
 import MusicDetails from "./MusicDetails";
 import { useStyles } from "./header.styles";
 import { contexts } from "./../../../contexts/index";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
   const {
     currentSong,
-    audioRef:audio,
+    audioRef: audio,
     isPlaying,
     setIsPlaying,
     setCurrentSong,
@@ -33,6 +35,8 @@ function Header() {
   useEffect(() => {
     handlePlayMusic();
   }, [currentSong]);
+
+  
 
   return (
     <Box className={classes.root} component="header">
